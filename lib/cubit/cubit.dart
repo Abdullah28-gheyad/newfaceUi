@@ -103,6 +103,17 @@ class AppCubit extends Cubit <AppStates>{
       emit(MakeDurationSuccessState()) ;
     });
   }
+  //
+  // bool? check = true ;
+  // bool checkState()
+  // {
+  //   if (state is !MakeDurationLoadingState) {
+  //     check = true ;
+  //     return true ;
+  //   }
+  //   check=false;
+  //   return false ;
+  // }
 
   // bool test = false ;
   // bool check()
