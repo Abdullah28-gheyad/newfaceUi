@@ -1,10 +1,6 @@
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newfacebook/cubit/cubit.dart';
-import 'package:newfacebook/cubit/states.dart';
-import 'package:newfacebook/modules/screens/phone_screen.dart';
-import 'package:newfacebook/modules/screens/web_screen.dart';
 import 'package:newfacebook/shared/bloc_observer.dart';
 import 'package:newfacebook/shared/style/style.dart';
 
@@ -19,28 +15,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)=>AppCubit()..makeDuration(),//..checkState(),
-    child: Builder(
-        builder: (context) {
-            return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                theme: lightTheme,
-                home:  LayoutBuilder(
-                    builder: (BuildContext context, BoxConstraints constraints)
-                    {
-                      print (constraints.minWidth.toInt()) ;
-                      print (constraints.minHeight.toInt()) ;
-                      if (constraints.minWidth.toInt() <=500||constraints.minHeight.toInt() <=500) {
-                        return const HomePhoneScreen();
-                      }
-                      return HomeWebScreen() ;
-                    })
-            );
-          }
-    ),
-      );
+      create: (BuildContext context) =>AppCubit()..makeDelay(),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme,
+          home:  LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints)
+              {
+                  return  AppCubit.get(context).checkScreenSize(width: constraints.minWidth.toInt(),height:constraints.minHeight.toInt() );
+              })
+      ),
+    );
   }
-
-
-
 }
+
