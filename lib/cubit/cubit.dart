@@ -310,6 +310,7 @@ class AppCubit extends Cubit<AppStates> {
     int? width,
     int? height,
   }) {
+
     if (width! <= 500 || height! <= 500) {
      // emit(CheckingScreenSizeSuccessState());
       return const HomePhoneScreen();
@@ -321,9 +322,8 @@ class AppCubit extends Cubit<AppStates> {
 
   Future<void> makeDelay()async
   {
-    Timer(Duration(seconds: 3), () {
-      print("Yeah, this line is printed after 3 seconds");
-    });
+    await Future.delayed(const Duration(seconds: 3));
+    emit(MakeDurationSuccessState()) ;
   }
 
 }

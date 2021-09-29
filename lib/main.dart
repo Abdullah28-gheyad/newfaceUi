@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           home:  LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints)
               {
-                  return  AppCubit.get(context).checkScreenSize(width: constraints.minWidth.toInt(),height:constraints.minHeight.toInt() );
+                return  AppCubit.get(context).checkScreenSize(width: constraints.minWidth.toInt(),height:constraints.minHeight.toInt() ) ;
               })
       ),
     );
